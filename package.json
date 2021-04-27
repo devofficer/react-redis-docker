@@ -2,6 +2,7 @@
     "name": "fuse-react-app",
     "version": "5.3.1",
     "private": true,
+    "proxy": "http://localhost:3600",
     "dependencies": {
         "@date-io/core": "1.3.13",
         "@date-io/date-fns": "1.3.13",
@@ -21,8 +22,10 @@
         "axios-mock-adapter": "1.19.0",
         "chart.js": "2.9.4",
         "clsx": "1.1.1",
+        "concurrently": "^6.0.2",
         "cross-fetch": "3.0.6",
         "date-fns": "2.16.1",
+        "express": "^4.17.1",
         "firebase": "8.2.2",
         "formsy-react": "2.2.1",
         "google-map-react": "2.1.9",
@@ -74,6 +77,8 @@
         "react-text-mask": "5.4.3",
         "react-virtualized": "9.22.3",
         "react-window": "1.8.6",
+        "redis": "^3.1.2",
+        "redis-server": "^1.2.2",
         "redux": "4.0.5",
         "redux-logger": "4.0.0",
         "styled-components": "5.2.1",
@@ -114,7 +119,7 @@
         "tailwindcss-dir": "4.0.0"
     },
     "scripts": {
-        "start": "yarn run tailwind && react-scripts start",
+        "start": "yarn run tailwind && concurrently \"node server\" \"react-scripts start\"",
         "build": "yarn run tailwind && yarn run purge-tailwind && cross-env GENERATE_SOURCEMAP=false react-scripts build",
         "tailwind": "tailwind build ./src/styles/tailwind-config.css -c ./tailwind.config.js -o ./src/styles/tailwind.css",
         "purge-tailwind": "node ./purge-tailwindcss.js",

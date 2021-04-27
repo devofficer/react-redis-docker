@@ -61,48 +61,26 @@ function UserMenu(props) {
 					paper: 'py-8'
 				}}
 			>
-				{!user.role || user.role.length === 0 ? (
-					<>
-						<MenuItem component={Link} to="/login" role="button">
-							<ListItemIcon className="min-w-40">
-								<Icon>lock</Icon>
-							</ListItemIcon>
-							<ListItemText primary="Login" />
-						</MenuItem>
-						<MenuItem component={Link} to="/register" role="button">
-							<ListItemIcon className="min-w-40">
-								<Icon>person_add</Icon>
-							</ListItemIcon>
-							<ListItemText primary="Register" />
-						</MenuItem>
-					</>
-				) : (
-					<>
-						<MenuItem component={Link} to="/pages/profile" onClick={userMenuClose} role="button">
-							<ListItemIcon className="min-w-40">
-								<Icon>account_circle</Icon>
-							</ListItemIcon>
-							<ListItemText primary="My Profile" />
-						</MenuItem>
-						<MenuItem component={Link} to="/apps/mail" onClick={userMenuClose} role="button">
-							<ListItemIcon className="min-w-40">
-								<Icon>mail</Icon>
-							</ListItemIcon>
-							<ListItemText primary="Inbox" />
-						</MenuItem>
-						<MenuItem
-							onClick={() => {
-								dispatch(logoutUser());
-								userMenuClose();
-							}}
-						>
-							<ListItemIcon className="min-w-40">
-								<Icon>exit_to_app</Icon>
-							</ListItemIcon>
-							<ListItemText primary="Logout" />
-						</MenuItem>
-					</>
-				)}
+				<>
+					<MenuItem role="button">
+						<ListItemIcon className="min-w-40">
+							<Icon>account_circle</Icon>
+						</ListItemIcon>
+						<ListItemText primary="My Profile" />
+					</MenuItem>
+					<MenuItem role="button">
+						<ListItemIcon className="min-w-40">
+							<Icon>mail</Icon>
+						</ListItemIcon>
+						<ListItemText primary="Inbox" />
+					</MenuItem>
+					<MenuItem role="button">
+						<ListItemIcon className="min-w-40">
+							<Icon>exit_to_app</Icon>
+						</ListItemIcon>
+						<ListItemText primary="Logout" />
+					</MenuItem>
+				</>
 			</Popover>
 		</>
 	);

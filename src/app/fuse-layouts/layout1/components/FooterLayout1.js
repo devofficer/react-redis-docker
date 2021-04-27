@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectFooterTheme } from 'app/store/fuse/settingsSlice';
+import Moment from 'moment';
 
 function FooterLayout1(props) {
 	const footerTheme = useSelector(selectFooterTheme);
@@ -18,7 +19,12 @@ function FooterLayout1(props) {
 				style={{ backgroundColor: footerTheme.palette.background.paper }}
 			>
 				<Toolbar className="min-h-48 md:min-h-64 px-8 sm:px-12 py-0 flex items-center overflow-x-auto">
-					<Typography>Footer</Typography>
+					<Typography className="m-auto">
+						{Moment().format("DD-MMM-YYYY")}
+					</Typography>
+					<Typography className="absolute right-12">
+						Built with Ruslan
+					</Typography>
 				</Toolbar>
 			</AppBar>
 		</ThemeProvider>
