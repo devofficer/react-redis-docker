@@ -1,0 +1,39 @@
+version: '3.7'
+
+services:
+
+  redis:
+    image: redis
+    container_name: cache
+    expose:
+      - 6379
+      
+  server:
+    container_name: server
+    build: ./server
+    volumes:
+      - './server:/server'
+    ports:
+      - 3600:3600
+    links:
+      - redis
+    environment:
+      - REDIS_URL=redis://cache
+      - NODE_ENV=development
+      - PORT=3600
+    command:
+      sh -c 'yarn install && node server.js'
+
+  client:
+    container_name: client
+    build: ./client
+    volumes:
+      - './client:/client'
+    ports:
+      - 3500:3500
+    environment:
+      - NODE_ENV=development
+      - PORT=3500
+    command:
+      sh -c 'yarn install && yarn start'
+

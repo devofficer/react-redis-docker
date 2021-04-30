@@ -10,7 +10,7 @@ app.use((req, res, next) => {
 });
 
 // create and connect redis client to local instance.
-const client = redis.createClient();
+const client = redis.createClient(process.env.REDIS_URL);
 
 // Print redis errors to the console
 client.on("error", (err) => {
