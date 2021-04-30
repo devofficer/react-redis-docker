@@ -29,6 +29,9 @@ services:
     build: ./client
     volumes:
       - './client:/client'
+    stdin_open: true
+    expose:
+      - 3500
     ports:
       - 3500:3500
     environment:
